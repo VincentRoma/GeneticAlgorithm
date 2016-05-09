@@ -16,7 +16,7 @@ class GeneticAlgorithm:
     REC = 0.5
 
     # how many tournaments should be played
-    END = 1000
+    END = 2000
 
     # the sum pile, end result for the SUM pile
     # card1 + card2 + card3 + card4 + card5, MUST = 36 for a good GA
@@ -78,13 +78,22 @@ class GeneticAlgorithm:
     def display(self, tournaments, n):
         print("\r\n==============================\r\n")
         print("After {} tournaments, Solution sum pile (should be 36) cards are : ".format(tournaments))
+        countsum = 0
+        countprod = 1
         for i in range(0, self.LEN):
             if self.gene[n][i] == 0:
                 print(i + 1)
+                countsum += i+1
+        print("\r\nWhich sum to: {}\r\n".format(countsum))
+        print("\r\n==============================\r\n")
         print("\r\nAnd Product pile (should be 360)  cards are : ")
         for i in range(0, self.LEN):
             if self.gene[n][i] == 1:
                 print(i + 1)
+
+                countprod = countprod*(i+1)
+        print("\r\nWhich product is: {}\r\n".format(countprod))
+        print("\r\n==============================\r\n")
 
     # evaluate the the nth member of the population
     # @param n : the nth member of the population
